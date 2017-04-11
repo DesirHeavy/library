@@ -1,0 +1,39 @@
+{% extends "BibliBundle::layout.html.twig" %}
+
+{% block title %}
+    Lecture d'un livre- {{ parent() }}
+{% endblock %}
+
+{% block Bibli_body %}
+    <h2>Liste des livres</h2>
+<table>
+    <tr>
+        <th>Isbn</th>
+        <th>Titre</th>
+        <th>Prix</th>
+        <th>Action</th>
+    </tr>
+    {#{% for book in books %}#}
+        <tr>
+            <td>{{book.isbn}} </td>
+            <td>{{book.title}} </td>
+            <td>{{book.price}} </td>
+            <td><a href="{{ path('bibli_edit', {'id': book.id}) }}">edit</a></td><br/>
+        </tr>
+    {#{% endfor  %}#}
+    </table>
+    <p>
+        <a href="{{ path('bibli_add') }}">
+            <button class="editbtn">Ajouter un livre</button>
+        </a>
+        <!--<a href="{#{{ path('bibli_edit', {'id': book.id}) }}#}" class="btn btn-default">
+            <i class="glyphicon glyphicon-edit"></i>
+            Modifier l'annonce
+        </a>
+        <a href="{#{{ path('bibli_delete', {'id': book.id}) }}#}" class="btn btn-danger">
+            <i class="glyphicon glyphicon-trash"></i>
+            Supprimer un livre
+        </a>
+    </p>-->
+
+{% endblock %}

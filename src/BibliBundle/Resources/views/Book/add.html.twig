@@ -1,0 +1,40 @@
+{% extends "BibliBundle::layout.html.twig" %}
+
+
+{% block title %}
+
+    Ajouter un livre - {{ parent() }}
+
+{% endblock %}
+
+
+{% block Bibli_body %}
+
+
+    <h2>Ajouter un livre</h2>
+
+
+    {{ include("BibliBundle:Book:form.html.twig") }}
+
+
+    <p>
+
+        Vous ajoutez un livre !
+
+    </p>
+
+
+    <p>
+
+        <a href="{{ path('bibli_homepage')}}" class="btn btn-default">
+
+            <i class="glyphicon glyphicon-chevron-left"></i>
+
+             Retour aux livres
+
+        </a>
+
+    </p>
+
+
+{% endblock %}

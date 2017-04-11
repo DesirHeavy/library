@@ -1,0 +1,31 @@
+{% extends "BibliBundle::layout.html.twig" %}
+
+
+{% block title %}
+
+    Modifier un livre - {{ parent() }}
+
+{% endblock %}
+
+
+{% block Bibli_body %}
+
+
+    <h2>Modifier un livre</h2>
+
+
+    {{ include("BibliBundle:Book:form.html.twig") }}
+
+
+    <p>
+
+        <a href = "{{ path('bibli_homepage')}}"class="btn btn-default">
+
+            <i class="glyphicon glyphicon-chevron-left"></i>
+
+            Retour aux livres</a>
+
+    </p>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+bibli_homepage:
+    path:     /{page}
+    defaults: { _controller: BibliBundle:Book:index, page: 1}
+    requirements:
+     page: '\d+'
+
+bibli_view:
+    path:   /book/{id}
+    defaults: { _controller: BibliBundle:Book:view }
+    requirements:
+     id: \d+
+
+bibli_add:
+    path:   /add
+    defaults: {_controller: BibliBundle:Book:add}
+    requirements:
+     id: \d+
+
+bibli_edit:
+    path:   /edit/{id}
+    defaults: {_controller: BibliBundle:Book:edit}
+    requirements:
+     id: \d+
+
+bibli_delete:
+     path:   /delete/{id}
+     defaults: {_controller: BibliBundle:Book:delete}
+

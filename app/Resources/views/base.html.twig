@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Bibliothèque{% endblock %}</title>
+
+    {% block stylesheets %}
+
+        {# On charge le CSS de bootstrap depuis le site directement #}
+
+        {% stylesheets 'bundles/framework/css/index.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        {% endstylesheets %}
+
+    {% endblock %}
+</head>
+
+
+<body class="body">
+
+<div>
+
+    <header>
+        <h1 align="center" class="bibli">Bibliothèque Paris I - Panthéon Sorbonne</h1>
+
+    </header>
+
+    <div class="row">
+
+        <nav id="menu">
+            <ul class= "navigationBar">
+                <li class="home"><a href="{{ path('bibli_homepage') }}" id="home">Home</a></li>
+                {% if is_granted('ROLE_ADMIN')%}
+                    <li class="'deconnexion"><a class ="Active" href="{{ path('fos_user_security_logout') }}">deconnexion</a></li>
+                {% else %}
+                    <li class="'connexion"><a class ="Active" href="{{ path('fos_user_security_login') }}">connexion</a></li>
+                    <li class="'connexion"><a class ="Active" href="{{ path('fos_user_registration_register') }}">inscription</a></li>
+                {% endif %}
+
+            </ul>
+
+        </nav>
+
+        <div align ="center" id="content"><div id="wrapper"></div>
+
+            {% block body %}
+
+            {% endblock %}
+
+        </div>
+
+    </div>
+
+
+    <hr>
+
+
+    <footer>
+
+        <p align="center">The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+
+    </footer>
+
+</div>
+
+{% block javascripts %}
+
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+{% endblock %}
+</body>
+
+</html>

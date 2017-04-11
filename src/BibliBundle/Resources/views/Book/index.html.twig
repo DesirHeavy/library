@@ -1,0 +1,37 @@
+{% extends "BibliBundle::layout.html.twig" %}
+
+{% block title %}
+    Accueil - {{ parent() }}
+{% endblock %}
+
+{% block Bibli_body %}
+    <h2 class="sisi">Liste des livres</h2>
+    <table>
+    <thead>
+    <tr>
+        <th>Isbn</th>
+        <th>Titre</th>
+        <th>Prix</th>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <th>Action</th>
+        {% endif %}
+    </tr>
+    </thead>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.price }}</td>
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <td><a href="{{ path('bibli_edit', {'id': book.id}) }}"><button type="button" class="btn btn-info btn-block"><strong>Modifier</strong></button></a> <a href="{{ path('bibli_delete', {'id': book.id}) }}"><button type="button" class="btn btn-danger btn-block"><strong>Supprimer</strong></button></a></td><br/><br/>
+            {% endif %}
+                    </tr>
+        {% endfor %}
+    </table>
+    <p></p>
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+    <a href="{{ path('bibli_add') }}">
+        <button class="editbtn">Ajouter un livre</button>
+    </a>
+    {% endif %}
+{% endblock %}
